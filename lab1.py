@@ -1,5 +1,5 @@
 #Laboratorio 1 - CPD:
-#Nomes: Luccas da Silva Lima e 
+#Nomes: Luccas da Silva Lima e Bruno Longo Farina
 #Turma: B
 
 #Sequencia a serem utilizadas:
@@ -11,6 +11,7 @@
 #KNUTH = [1,4,13,40,121,364,1093,3280,9841,29524,88573,265720,797161,2391484,...]
 
 #CIURA = [1,4,10,23,57,132,301,701,1577,3548,7983,17961,40412,90927,204585,460316,1035711,....] 
+
 
 #Shell_sort. Recebe como parametro um vetor e o seu tamanho.
 def shell_sort(array,n,seq):    
@@ -66,3 +67,25 @@ shell_sort(array,n,knuth)
 array = [16, 14, 12, 1, 8, 4, 9, 6, 15, 13, 11, 2, 7, 3, 10, 5]
 print(array, 'SEQ = CIURA')
 shell_sort(array,n,ciura)
+
+#abre o arquivo para criar uma lista com os tamanhos de cada array
+with open('entrada1.txt','r') as f: #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
+    tamanho = [int(r.split()[0]) for r in f]
+
+#abre o arquivo de novo (n sei pq fechou)
+f = open('entrada1.txt','r') #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
+
+#pra cada linha ele armazena os valores numa string
+for i in tamanho:
+    data = f.readline()
+    #converte a string em uma lista de inteiros
+    res = [int(i) for i in data.split()]
+    #remove o primeiro valor, que era o tamanho 
+    del res[0]
+    #printa o array (acho que dá pra tirar essa parte)
+    print (res)
+    #e faz o shell sort dela
+    shell_sort(res,i,shell)
+    
+
+
