@@ -13,9 +13,28 @@
 #CIURA = [1,4,10,23,57,132,301,701,1577,3548,7983,17961,40412,90927,204585,460316,1035711,....] 
 
 
+#vai criar uma lista onde vai ser posto o texto antes de ser escrito no arquivo (é complicado mas confia)
+textinho = []
+
+def definir_seq(seq):
+    if seq[2] == 4:
+        return 'Shell'
+    elif seq[2] == 13:
+        return 'Knuth'
+    else:
+        return 'Ciura'
+
 #Shell_sort. Recebe como parametro um vetor e o seu tamanho.
 def shell_sort(array,n,seq):    
     #inicia i valendo 0 e percorre o vetor da sequencia utilizada (shell, knuth ou ciura)
+    
+    #escreve no textinho o array intacto e qual sequencia está sendo utilizada (ver se n é melhor fazer isso dentro da main ao inves da função)
+    textinho.append(str(array))
+    textinho.append('SEQ = ')
+    textinho.append(definir_seq(seq))#aqui ta dando problema, ele tá escrevendo os números da sequencia ao invés de 
+    textinho.append('\n')
+
+
     i = 0
     while i < 20:
         #caso ache um valor em seq[i+1] MAIOR que a posicao presente no meio do vetor, utiliza seq[i]
@@ -38,6 +57,12 @@ def shell_sort(array,n,seq):
                     #Como as 'trocas' sao realizadas utilizando variaveis auxiliares, cada uma delas deve ser feita separadamente.
                 #printa o array, informando qual incremento foi utilizado.
                 print(array, 'INCR =',seq[i])
+
+                #vai colocar numa lista essa string que acabou de ser disposta
+                textinho.append(str(array))
+                textinho.append('INCR =')
+                textinho.append(str(seq[i]))
+                textinho.append('\n')
                 #decrementa i, para retroceder uma posicao no vetor das sequencias.                
                 i = i - 1
             #Caso o ordenamento tenha acontecido, i = 20 para interromper o loop no while.
@@ -52,7 +77,7 @@ def shell_sort(array,n,seq):
 shell = [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536,131072,262144,524288,1048576]
 knuth = [1,4,13,40,121,364,1093,3280,9841,29524,88573,265720,797161,2391484]
 ciura = [1,4,10,23,57,132,301,701,1577,3548,7983,17961,40412,90927,204585,460316,1035711] 
-
+'''
 #Primeiro vetor do arquivo entrada1.txt:
 array = [16, 14, 12, 1, 8, 4, 9, 6, 15, 13, 11, 2, 7, 3, 10, 5]
 #n = array length
@@ -67,13 +92,13 @@ shell_sort(array,n,knuth)
 array = [16, 14, 12, 1, 8, 4, 9, 6, 15, 13, 11, 2, 7, 3, 10, 5]
 print(array, 'SEQ = CIURA')
 shell_sort(array,n,ciura)
-
+'''
 #abre o arquivo para criar uma lista com os tamanhos de cada array
-with open('entrada1.txt','r') as f: #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
+with open('C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\entrada1.txt','r') as f: #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
     tamanho = [int(r.split()[0]) for r in f]
 
 #abre o arquivo de novo (n sei pq fechou)
-f = open('entrada1.txt','r') #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
+f = open('C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\entrada1.txt','r') #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
 
 #pra cada linha ele armazena os valores numa string
 for i in tamanho:
@@ -86,6 +111,19 @@ for i in tamanho:
     print (res)
     #e faz o shell sort dela
     shell_sort(res,i,shell)
-    
+    shell_sort(res,i,knuth)
+    shell_sort(res,i,ciura)
+   
+    #arquivo.write(str(res)+'\n')
+arquivo = open('C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\saida1', 'w')
+j = 0
+for i in textinho:
+    arquivo.write(textinho[j])
+    j=j+1
+arquivo.close()
+f.close()
+
+
+
 
 
