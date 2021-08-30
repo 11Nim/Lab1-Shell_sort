@@ -94,11 +94,11 @@ print(array, 'SEQ = CIURA')
 shell_sort(array,n,ciura)
 '''
 #abre o arquivo para criar uma lista com os tamanhos de cada array
-with open('C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\entrada1.txt','r') as f: #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
+with open('entrada1.txt','r') as f: #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
     tamanho = [int(r.split()[0]) for r in f]
 
 #abre o arquivo de novo (n sei pq fechou)
-f = open('C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\entrada1.txt','r') #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
+f = open('entrada1.txt','r') #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
 
 #pra cada linha ele armazena os valores numa string
 for i in tamanho:
@@ -115,7 +115,7 @@ for i in tamanho:
     shell_sort(res,i,ciura)
    
     #arquivo.write(str(res)+'\n')
-arquivo = open('C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\saida1', 'w')
+arquivo = open('saida1', 'w') #C:\\Users\\bruno\\OneDrive\\Documentos\\GitHub\\Lab1-Shell_sort\\
 j = 0
 for i in textinho:
     arquivo.write(textinho[j])
